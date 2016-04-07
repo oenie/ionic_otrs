@@ -1,0 +1,35 @@
+<ion-view view-title="OTRS Quick Ticket">
+    <ion-content class="has-header" ng-controller="TicketController" padding="true">
+        <label class="item item-input">
+            <span class="input-label">Room</span>
+            <input type="text" ng-model="data.room">
+        </label>
+
+        <button class="button button-block button-small button-assertive" ng-controller="ScanController" ng-click="scanBarcode()">Scan room barcode</button>
+
+        <label class="item item-input item-select">
+            <span class="input-label" problem>Problem</span>
+            <select ng-model="data.reason">
+                <option ng-repeat="problem in problems" ng-value="problem.value">{{problem.title}}</option>
+            </select>
+        </label>
+
+        <label class="item item-input" ng-show="data.reason == 'other'">
+            <span class="input-label">Andere</span>
+            <input type="text" ng-model="other">
+        </label>
+
+        <label class="item item-input">
+            <span class="input-label">Probleembeschrijving</span>
+            <input type="text" ng-model="description">
+        </label>
+
+        <label class="item item-input">
+            <span class="input-label">Log</span>
+            <input type="text" ng-model="log">
+        </label>
+
+        <br/>
+        <button class="button button-small button-assertive" ng-click="createTicket()">Create ticket</button>
+    </ion-content>
+</ion-view>
